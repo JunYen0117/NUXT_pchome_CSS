@@ -429,6 +429,11 @@ onMounted(() => {
       height: 200px;
     }
   }
+  @media screen and (max-width: 440px){
+    .carousel-item {
+      height: 150px;
+    }
+  }
 }
 .section4 {
   overflow: hidden;
