@@ -67,7 +67,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="mycontainer">
     <section class="section1 mb-2">
       <nav class="d-flex justify-content-between first_nav">
         <div class="ps-1"><img src="../assets/img/icons8-menu-50.png" alt=""></div>
@@ -370,17 +370,15 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-// body {
-//   background-color: lightgray;
-// }
 .nav_active {
   color: red;
   border-bottom: 2px solid red;
 }
 .section1 {
   background-color: white;
+  width: 100%;
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 10;
   .first_nav {
     border-bottom: 2px solid red;
@@ -392,6 +390,11 @@ onMounted(() => {
     div {
       padding: 5px;
       font-size: 16px;
+    }
+    @media screen and (max-width: 440px){
+      div {
+        font-size: 14px;
+      }
     }
   }
 }
@@ -428,6 +431,7 @@ onMounted(() => {
   }
 }
 .section4 {
+  overflow: hidden;
   ul {
     list-style: none;
     padding-left: 10px;
@@ -439,6 +443,11 @@ onMounted(() => {
       }
     }
   }
+  @media screen and (max-width: 440px){
+      ul {
+        padding: 0 0;
+      }
+    }
 }
 .section5 {
   .notification {
@@ -560,7 +569,7 @@ onMounted(() => {
   background-color: rgba(0, 0, 0, 0.412);
   border-radius: 50%;
   position: fixed;
-  right: 10px;
+  right: 25px;
   bottom: 120px;
   img {
     display: block;
