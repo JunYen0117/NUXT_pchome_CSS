@@ -362,7 +362,7 @@ onMounted(() => {
     </div>
 
     <!-- 回到最上層按鈕 -->
-    <div ref="goToTop" class="goToTop fadeIn">
+    <div ref="goToTop" class="goToTop fadeOut">
       <img src="../assets/img/icons8-triangle-24.png" alt="">
       <div class="word">TOP</div>
     </div>
