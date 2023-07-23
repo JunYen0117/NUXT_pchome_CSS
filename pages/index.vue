@@ -5,33 +5,49 @@ const goToTop = ref<null | Element>(null);
 const scrollPercent = ref<null | number>(null);
 const isReachPercent = ref<boolean>(false);
 
-// 監聽isMove，決定controller的HTML選單，要顯現or隱藏
+// 監聽isMove，改變HTML的class，決定controller的HTML選單，要顯現or隱藏
 watch(isMove,
   () => {
-    if (controller.value !== null) {
-      if (isMove.value === true) {
+    if (controller.value === null) return
+    switch (isMove.value) {
+      case true:
         controller.value.className = 'controller d-flex justify-content-evenly controller_hide'
         setTimeout(() => {
           isMove.value = false
         }, 2000)
-      } else if (isMove.value === false) {
+        break;
+      case false:
         controller.value.className = 'controller d-flex justify-content-evenly controller_show'
-
-      }
+        break;
     }
+      // if (isMove.value === true) {
+      //   controller.value.className = 'controller d-flex justify-content-evenly controller_hide'
+      //   setTimeout(() => {
+      //     isMove.value = false
+      //   }, 2000)
+      // } else if (isMove.value === false) {
+      //   controller.value.className = 'controller d-flex justify-content-evenly controller_show'
+      // }
   }
 )
 
-// 監聽isReachPercent，決定goToTop的HTML按鈕，要顯現or隱藏
+// 監聽isReachPercent，改變HTML的class，決定goToTop的HTML按鈕，要顯現or隱藏
 watch(isReachPercent,
   () => {
-    if (goToTop.value !== null) {
-      if (isReachPercent.value === true) {
+    if (goToTop.value === null) return
+    switch (isReachPercent.value) {
+      case true:
         goToTop.value.className = 'goToTop fadeIn'
-      } else if (isReachPercent.value === false) {
+        break;
+      case false:
         goToTop.value.className = 'goToTop fadeOut'
-      }
+        break;
     }
+      // if (isReachPercent.value === true) {
+      //   goToTop.value.className = 'goToTop fadeIn'
+      // } else if (isReachPercent.value === false) {
+      //   goToTop.value.className = 'goToTop fadeOut'
+      // }
   }
 )
 
@@ -40,7 +56,8 @@ onMounted(() => {
   // 只要發生捲動事件，就改變常數isMove布林值，變成true
   // 不捲動時，isMove會自動變回false
   window.addEventListener('scroll', () => {
-    if(controller.value !== null && isMove.value === false) {
+    if(controller.value === null) return
+    if(isMove.value === false) {
       isMove.value = true
     }
   })
@@ -57,9 +74,10 @@ onMounted(() => {
 
   // 只要捲動超過25%，就改變常數isReachPercent布林值
   window.addEventListener('scroll', () => {
-    if (scrollPercent.value !== null && scrollPercent.value >= 25) {
+    if (scrollPercent.value === null) return
+    if (scrollPercent.value >= 25) {
       isReachPercent.value = true;
-    } else if (scrollPercent.value !== null && scrollPercent.value <= 25) {
+    } else if (scrollPercent.value <= 25) {
       isReachPercent.value = false;
     }
   })
