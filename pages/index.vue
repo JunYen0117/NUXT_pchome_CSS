@@ -85,7 +85,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mycontainer">
+  <div class="mycontainer" id="top">
     <section class="section1 mb-2">
       <nav class="d-flex justify-content-between first_nav">
         <div class="ps-1"><img src="../assets/img/icons8-menu-50.png" alt=""></div>
@@ -381,6 +381,7 @@ onMounted(() => {
 
     <!-- 回到最上層按鈕 -->
     <div ref="goToTop" class="goToTop fadeOut">
+      <a href="#top" type="button"></a>
       <img src="../assets/img/icons8-triangle-24.png" alt="">
       <div class="word">TOP</div>
     </div>
@@ -495,6 +496,9 @@ onMounted(() => {
     }
   }
   // 輪播
+  .carousel-control-prev, .carousel-control-next {
+    z-index: 0;
+  }
   .discount_time {
     text-align: center;
     span {
@@ -599,12 +603,18 @@ onMounted(() => {
     position: absolute;
     top: 5px;
     left: calc(50% - 15px);
-
   }
   .word {
     position: absolute;
     top: calc(40%);
     left: calc(50% - 20px);
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
   }
 }
 .fadeIn {
